@@ -13,6 +13,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,9 @@ import lombok.ToString;
 
 
 
+/**
+ * clase que representa una reservación
+ * */
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -42,7 +46,7 @@ public class Reservation {
 	/**
 	 * Precio total de la reservación.
 	 */
-	@Column(precision = 10, scale = 2)
+	@Column(nullable = false, precision = 10)
 	private float total_price;
 	
 	/**
@@ -55,10 +59,9 @@ public class Reservation {
 	/**
 	 * Cliente asociado a la reservación.
 	 */
-	@ManyToAny
+	@ManyToOne
 	@JoinColumn(name="costumer_Id")
 	private Costumer costumer;
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(costumer, reservation_Id, reservation_date, status, total_price);
