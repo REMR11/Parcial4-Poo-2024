@@ -34,6 +34,11 @@ public class FoodPlate {
 	@JoinColumn(name = "menu_Id")
 	private Menu menu;
 
+	@ManyToOne
+	@JoinColumn(name = "oder_Id")
+	
+	private Order order;
+	
 	/**
 	 * @return the foodPlate_id
 	 */
