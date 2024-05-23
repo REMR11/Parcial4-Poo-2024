@@ -55,34 +55,36 @@ public class Costumer {
     private List<Reservation> reservaciones;
 
     @OneToOne(cascade = CascadeType.ALL)
-    private Order order;
+    private OrderCostumer order;
     /**
      * Constructor por defecto.
      */
     public Costumer() {}
 
     /**
-     * Constructor con todos los atributos.
-     *
-     * @param costumer_Id Identificador único del cliente.
-     * @param name Nombre del cliente.
-     * @param email Email del cliente.
-     * @param password Contraseña del cliente.
-     * @param phone Número de teléfono del cliente.
-     * @param reservaciones Lista de reservaciones del cliente.
-     */
-    public Costumer(Integer costumer_Id, String name, String email, String password, Integer phone, List<Reservation> reservaciones) {
-        this.costumer_Id = costumer_Id;
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.phone = phone;
-        this.reservaciones = reservaciones;
-    }
+	 * @param costumer_Id
+	 * @param name
+	 * @param email
+	 * @param password
+	 * @param phone
+	 * @param reservaciones
+	 * @param order
+	 */
+	public Costumer(Integer costumer_Id, String name, String email, String password, Integer phone,
+			List<Reservation> reservaciones, OrderCostumer order) {
+		super();
+		this.costumer_Id = costumer_Id;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.phone = phone;
+		this.reservaciones = reservaciones;
+		this.order = order;
+	}
 
-    // Getters and setters
 
-    public Integer getCostumer_Id() {
+
+	public Integer getCostumer_Id() {
         return costumer_Id;
     }
 
@@ -129,29 +131,84 @@ public class Costumer {
     public void setReservaciones(List<Reservation> reservaciones) {
         this.reservaciones = reservaciones;
     }
+ 
+    /**
+	 * @return the order
+	 */
+	public OrderCostumer getOrder() {
+		return order;
+	}
+
+	/**
+	 * @param order the order to set
+	 */
+	public void setOrder(OrderCostumer order) {
+		this.order = order;
+	}
+
 
     @Override
-    public int hashCode() {
-        return Objects.hash(costumer_Id, email, name, password, phone, reservaciones);
-    }
+	public int hashCode() {
+		return Objects.hash(costumer_Id, email, name, order, password, phone, reservaciones);
+	}
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Costumer other = (Costumer) obj;
-        return Objects.equals(costumer_Id, other.costumer_Id) && Objects.equals(email, other.email)
-                && Objects.equals(name, other.name) && Objects.equals(password, other.password)
-                && Objects.equals(phone, other.phone) && Objects.equals(reservaciones, other.reservaciones);
-    }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Costumer other = (Costumer) obj;
+		return Objects.equals(costumer_Id, other.costumer_Id) && Objects.equals(email, other.email)
+				&& Objects.equals(name, other.name) && Objects.equals(order, other.order)
+				&& Objects.equals(password, other.password) && Objects.equals(phone, other.phone)
+				&& Objects.equals(reservaciones, other.reservaciones);
+	}
 
-    @Override
-    public String toString() {
-        return "Costumer [costumer_Id=" + costumer_Id + ", name=" + name + ", email=" + email + ", password=" + password + ", phone=" + phone + ", reservaciones=" + reservaciones + "]";
-    }
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Costumer [");
+		if (costumer_Id != null) {
+			builder.append("costumer_Id=");
+			builder.append(costumer_Id);
+			builder.append(", ");
+		}
+		if (name != null) {
+			builder.append("name=");
+			builder.append(name);
+			builder.append(", ");
+		}
+		if (email != null) {
+			builder.append("email=");
+			builder.append(email);
+			builder.append(", ");
+		}
+		if (password != null) {
+			builder.append("password=");
+			builder.append(password);
+			builder.append(", ");
+		}
+		if (phone != null) {
+			builder.append("phone=");
+			builder.append(phone);
+			builder.append(", ");
+		}
+		if (reservaciones != null) {
+			builder.append("reservaciones=");
+			builder.append(reservaciones);
+			builder.append(", ");
+		}
+		if (order != null) {
+			builder.append("order=");
+			builder.append(order);
+		}
+		builder.append("]");
+		return builder.toString();
+	}
+
+	
 
 }

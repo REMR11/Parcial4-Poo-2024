@@ -1,5 +1,7 @@
 package com.parcialpoo.ufg.MR100823.models;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
@@ -37,8 +40,10 @@ public class FoodPlate {
 	@ManyToOne
 	@JoinColumn(name = "oder_Id")
 	
-	private Order order;
+	private OrderCostumer order;
 	
+	@OneToMany(mappedBy = "foodPlate")
+	private List<Ingredient> ingredients;
 	/**
 	 * @return the foodPlate_id
 	 */
