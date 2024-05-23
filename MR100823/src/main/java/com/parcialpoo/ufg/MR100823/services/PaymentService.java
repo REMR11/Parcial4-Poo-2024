@@ -2,32 +2,63 @@ package com.parcialpoo.ufg.MR100823.services;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.parcialpoo.ufg.MR100823.models.Payment;
+import com.parcialpoo.ufg.MR100823.repository.PaymentRepository;
 
-public class PaymentService implements IPaymentService{
+/**
+ * Servicio para manejar las operaciones de la entidad Payment.
+ *
+ * @author remr1
+ */
+public class PaymentService implements IPaymentService {
 
-	@Override
-	public List<Payment> showAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    /**
+     * Inyección de dependencia de la interfaz PaymentRepository.
+     */
+    @Autowired
+    private PaymentRepository pPaymentRepository;
 
-	@Override
-	public Payment FindById(Integer pPayment_Id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    /**
+     * Obtiene una lista con todas las entidades Payment almacenadas en la base de datos.
+     *
+     * @return una lista con todas las entidades Payment.
+     */
+    @Override
+    public List<Payment> showAll() {
+        return pPaymentRepository.findAll();
+    }
 
-	@Override
-	public void savePayment(Payment pPayment) {
-		// TODO Auto-generated method stub
-		
-	}
+    /**
+     * Obtiene una entidad Payment específica por su ID.
+     *
+     * @param pPayment_Id el ID de la entidad Payment a obtener.
+     * @return la entidad Payment correspondiente al ID dado, o null si no se encuentra.
+     */
+    @Override
+    public Payment FindById(Integer pPayment_Id) {
+        return pPaymentRepository.findById(pPayment_Id).orElse(null);
+    }
 
-	@Override
-	public void DeletePayment(Payment pPayment) {
-		// TODO Auto-generated method stub
-		
-	}
+    /**
+     * Guarda una entidad Payment en la base de datos.
+     *
+     * @param pPayment la entidad Payment a guardar.
+     */
+    @Override
+    public void savePayment(Payment pPayment) {
+        pPaymentRepository.save(pPayment);
+    }
+
+    /**
+     * Elimina una entidad Payment de la base de datos.
+     *
+     * @param pPayment la entidad Payment a eliminar.
+     */
+    @Override
+    public void DeletePayment(Payment pPayment) {
+        pPaymentRepository.delete(pPayment);
+    }
 
 }
