@@ -11,5 +11,7 @@ public interface IPaymentService {
 	public Payment FindById(Integer pPayment_Id);
 
 	public void savePayment(Payment pPayment);
+	
+	public void DeletePayment(Payment pPayment);
 
 }
