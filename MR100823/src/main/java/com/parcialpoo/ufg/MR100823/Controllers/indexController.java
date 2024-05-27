@@ -1,0 +1,16 @@
+package com.parcialpoo.ufg.MR100823.Controllers;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import javafx.fxml.Initializable;
+
+public class indexController implements Initializable{
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
