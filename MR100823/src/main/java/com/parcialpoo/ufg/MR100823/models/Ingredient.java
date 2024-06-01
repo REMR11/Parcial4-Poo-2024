@@ -2,8 +2,6 @@ package com.parcialpoo.ufg.MR100823.models;
 
 import java.util.Objects;
 
-import org.hibernate.annotations.ManyToAny;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

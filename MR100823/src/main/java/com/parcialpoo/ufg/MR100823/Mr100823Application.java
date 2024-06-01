@@ -1,6 +1,5 @@
 package com.parcialpoo.ufg.MR100823;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.parcialpoo.ufg.MR100823.Presentation.SistemaReservaciones;

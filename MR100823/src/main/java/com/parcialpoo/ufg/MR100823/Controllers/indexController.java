@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.parcialpoo.ufg.MR100823.models.FoodPlate;
-import com.parcialpoo.ufg.MR100823.services.FoodPlateService;
+import com.parcialpoo.ufg.MR100823.services.FoodPlate.FoodPlateService;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

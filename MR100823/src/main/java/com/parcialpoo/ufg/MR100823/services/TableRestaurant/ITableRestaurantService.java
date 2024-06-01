@@ -1,4 +1,4 @@
-package com.parcialpoo.ufg.MR100823.services;
+package com.parcialpoo.ufg.MR100823.services.TableRestaurant;
 
 import java.util.List;
 
