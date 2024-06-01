@@ -21,13 +21,38 @@ public class CostumerService implements ICostumerService {
     private CostumerRepository costumerRepository;
 
     /**
+     * Verifica si un usuario y contraseña son iguales a los registros en la base de datos.
+     *
+     * @param pUsername el nombre de usuario a verificar.
+     * @param pPassword la contraseña a verificar.
+     * @return true si el usuario y contraseña son válidos, false en caso contrario.
+     */
+    public boolean login(String pUsername, String pPassword) {
+        try {
+            Costumer costumer = costumerRepository.findByUserName(pUsername);
+            if (costumer != null && costumer.getPassword().equals(pPassword)) {
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            System.out.println("Error al verificar credenciales: " + e.getMessage());
+            return false;
+        }
+    }
+
+    /**
      * Obtiene una lista con todas las entidades Costumer almacenadas en la base de datos.
      *
      * @return una lista con todas las entidades Costumer.
      */
     @Override
     public List<Costumer> showAll() {
-        return costumerRepository.findAll();
+        try {
+            return costumerRepository.findAll();
+        } catch (Exception e) {
+            System.out.println("Error al obtener lista de costumers: " + e.getMessage());
+            return null;
+        }
     }
 
     /**
@@ -38,8 +63,13 @@ public class CostumerService implements ICostumerService {
      */
     @Override
     public Costumer FindById(Integer pCostumer_Id) {
-        Costumer costumer = costumerRepository.findById(pCostumer_Id).orElse(null);
-        return costumer;
+        try {
+            Costumer costumer = costumerRepository.findById(pCostumer_Id).orElse(null);
+            return costumer;
+        } catch (Exception e) {
+            System.out.println("Error al obtener costumer por ID: " + e.getMessage());
+            return null;
+        }
     }
 
     /**
@@ -49,7 +79,11 @@ public class CostumerService implements ICostumerService {
      */
     @Override
     public void saveCostumer(Costumer pCoscutmer) {
-        costumerRepository.save(pCoscutmer);
+        try {
+            costumerRepository.save(pCoscutmer);
+        } catch (Exception e) {
+            System.out.println("Error al guardar costumer: " + e.getMessage());
+        }
     }
 
     /**
@@ -59,7 +93,11 @@ public class CostumerService implements ICostumerService {
      */
     @Override
     public void deleteCostumer(Costumer pCostumer) {
-        costumerRepository.delete(pCostumer);
+        try {
+            costumerRepository.delete(pCostumer);
+        } catch (Exception e) {
+            System.out.println("Error al eliminar costumer: " + e.getMessage());
+        }
     }
 
 }
