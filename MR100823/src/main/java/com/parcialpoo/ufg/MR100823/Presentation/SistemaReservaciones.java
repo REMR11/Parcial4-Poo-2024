@@ -50,7 +50,7 @@ public class SistemaReservaciones extends Application {
 	public void start(Stage stage) throws Exception {
 		// Crea un cargador de FXML para cargar la interfaz de usuario desde el archivo
 		// index.fxml
-		FXMLLoader louder = new FXMLLoader(Mr100823Application.class.getResource("/templates/index.fxml"));
+		FXMLLoader louder = new FXMLLoader(Mr100823Application.class.getResource("/templates/ViewLogin.fxml"));
 
 		// Establece la fábrica de controladores para que utilice los beans de la
 		// aplicación

@@ -82,7 +82,21 @@ public class Costumer {
 		this.order = order;
 	}
 
-
+	
+	/**
+	 * @param costumer_Id
+	 * @param name
+	 * @param email
+	 * @param password
+	 * @param phone
+	 */
+	public Costumer(String name, String email, String password, Integer phone) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.phone = phone;
+	}
 
 	public Integer getCostumer_Id() {
         return costumer_Id;

@@ -1,6 +1,12 @@
 package com.parcialpoo.ufg.MR100823.Controllers;
 
+import java.io.IOException;
+
+import javax.naming.AuthenticationException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
+import org.springframework.stereotype.Component;
 
 import com.parcialpoo.ufg.MR100823.services.Costumer.CostumerService;
 
@@ -17,11 +23,11 @@ import javafx.stage.Stage;
 /**
  * Controlador de la vista de inicio de sesión.
  */
+@Component
 public class ViewLoginController {
     /**
      * Servicio de autenticación de clientes inyectado.
      */
-    @Autowired
     private CostumerService pCostumerService = new CostumerService();
 
     /**
@@ -43,14 +49,14 @@ public class ViewLoginController {
      */
     @FXML
     private void handleLoginButtonClick(ActionEvent event) {
-        String username = usernameField.getText();
+        String pEmail = usernameField.getText();
         String password = passwordField.getText();
 
         try {
             /**
              * Autenticar las credenciales del usuario utilizando el servicio de autenticación.
              */
-            boolean isValid = pCostumerService.login(username, password);
+            boolean isValid = pCostumerService.login(pEmail, password);
 
             if (isValid) {
                 /**
@@ -62,7 +68,7 @@ public class ViewLoginController {
                 /**
                  * Mostrar la ventana principal.
                  */
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/templates/index.fxml"));
                 Parent root = loader.load();
                 Stage mainStage = new Stage();
                 mainStage.setScene(new Scene(root));
@@ -88,5 +94,17 @@ public class ViewLoginController {
                     "Ocurrió un error desconocido durante el proceso de inicio de sesión. Por favor, inténtelo de nuevo más tarde.");
             alert.showAndWait();
         }
+    }
+
+    @FXML
+    private void handleCreateAccountButtonClick(ActionEvent event) throws IOException {
+        Stage stage = (Stage) usernameField.getScene().getWindow();
+        stage.close();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/templates/createAccount.fxml"));
+        Parent root = loader.load();
+        Stage createAccountStage = new Stage();
+        createAccountStage.setScene(new Scene(root));
+        createAccountStage.show();
     }
 }

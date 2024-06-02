@@ -3,6 +3,7 @@ package com.parcialpoo.ufg.MR100823.services.Costumer;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.parcialpoo.ufg.MR100823.models.Costumer;
 import com.parcialpoo.ufg.MR100823.repository.CostumerRepository;
@@ -12,6 +13,7 @@ import com.parcialpoo.ufg.MR100823.repository.CostumerRepository;
  *
  * @author remr1
  *  */
+@Service
 public class CostumerService implements ICostumerService {
 
     /**
@@ -23,14 +25,14 @@ public class CostumerService implements ICostumerService {
     /**
      * Verifica si un usuario y contraseña son iguales a los registros en la base de datos.
      *
-     * @param pUsername el nombre de usuario a verificar.
+     * @param pEmail el correo de usuario a verificar.
      * @param pPassword la contraseña a verificar.
      * @return true si el usuario y contraseña son válidos, false en caso contrario.
      */
-    public boolean login(String pUsername, String pPassword) {
+    public boolean login(String email, String password) {
         try {
-            Costumer costumer = costumerRepository.findByUserName(pUsername);
-            if (costumer != null && costumer.getPassword().equals(pPassword)) {
+            Costumer costumer = findByEmail(email);
+            if (costumer != null && costumer.getPassword().equals(password)) {
                 return true;
             }
             return false;
@@ -97,6 +99,20 @@ public class CostumerService implements ICostumerService {
             costumerRepository.delete(pCostumer);
         } catch (Exception e) {
             System.out.println("Error al eliminar costumer: " + e.getMessage());
+        }
+    }
+
+    @Override
+    public Costumer findByEmail(String email) {
+        try {
+            Costumer costumer = costumerRepository.findByEmail(email);
+            if (costumer == null) {
+                throw new Exception("No se encontró un costumer con el email " + email);
+            }
+            return costumer;
+        } catch (Exception e) {
+            System.out.println("Error al buscar costumer por correo electrónico: " + e.getMessage());
+            return null;
         }
     }
 

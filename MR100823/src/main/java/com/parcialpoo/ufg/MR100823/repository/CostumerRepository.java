@@ -5,5 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.parcialpoo.ufg.MR100823.models.Costumer;
 
 public interface CostumerRepository extends JpaRepository<Costumer, Integer> {
-	Costumer findByUserName(String username);
+    Costumer findByEmail(String email);
+
 }

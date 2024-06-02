@@ -11,33 +11,44 @@ import com.parcialpoo.ufg.MR100823.models.Costumer;
  */
 public interface ICostumerService {
 
-    /**
-     * Obtiene una lista con todas las entidades Costumer almacenadas en la base de datos.
-     *
-     * @return una lista con todas las entidades Costumer.
-     */
-    public List<Costumer> showAll();
+	/**
+	 * Obtiene una lista con todas las entidades Costumer almacenadas en la base de
+	 * datos.
+	 *
+	 * @return una lista con todas las entidades Costumer.
+	 */
+	public List<Costumer> showAll();
 
-    /**
-     * Obtiene una entidad Costumer específica por su ID.
-     *
-     * @param pCostumer_Id el ID de la entidad Costumer a obtener.
-     * @return la entidad Costumer correspondiente al ID dado, o null si no se encuentra.
-     */
-    public Costumer FindById(Integer pCostumer_Id);
+	/**
+	 * Obtiene una entidad Costumer específica por su ID.
+	 *
+	 * @param pCostumer_Id el ID de la entidad Costumer a obtener.
+	 * @return la entidad Costumer correspondiente al ID dado, o null si no se
+	 *         encuentra.
+	 */
+	public Costumer FindById(Integer pCostumer_Id);
 
-    /**
-     * Guarda una entidad Costumer en la base de datos.
-     *
-     * @param pCoscutmer la entidad Costumer a guardar.
-     */
-    public void saveCostumer(Costumer pCoscutmer);
+	/**
+	 * Obtiene una entidad Costumer específica por su Email.
+	 *
+	 * @param email el correo de la entidad Costumer a obtener.
+	 * @return la entidad Costumer correspondiente al email dado, o null si no se
+	 *         encuentra.
+	 */
+	public Costumer findByEmail(String email);
+	/**
+	 * Guarda una entidad Costumer en la base de datos.
+	 *
+	 * @param pCoscutmer la entidad Costumer a guardar.
+	 */
+	public void saveCostumer(Costumer pCoscutmer);
 
-    /**
-     * Elimina una entidad Costumer de la base de datos.
-     *
-     * @param pCostumer la entidad Costumer a eliminar.
-     */
-    public void deleteCostumer(Costumer pCostumer);
+	/**
+	 * Elimina una entidad Costumer de la base de datos.
+	 *
+	 * @param pCostumer la entidad Costumer a eliminar.
+	 */
+	public void deleteCostumer(Costumer pCostumer);
+
 
 }
