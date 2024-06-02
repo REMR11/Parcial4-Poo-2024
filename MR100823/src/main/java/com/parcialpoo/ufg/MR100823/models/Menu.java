@@ -20,85 +20,83 @@ import jakarta.persistence.Table;
 @Table(name = "MENU")
 public class Menu {
 
-    /**
-     * Identificador único del menú.
-     */
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int menu_Id;
+	/**
+	 * Identificador único del menú.
+	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int menu_Id;
 
-    /**
-     * Nombre del menú.
-     */
-    @Column(length = 60)
-    private String name;
+	/**
+	 * Nombre del menú.
+	 */
+	@Column(length = 60)
+	private String name;
 
-    /**
-     * Descripción del menú.
-     */
-    @Column(length = 255)
-    private String description;
+	/**
+	 * Descripción del menú.
+	 */
+	@Column(length = 255)
+	private String description;
 
-    /**
-     * Precio del menú.
-     */
-    private int price;
+	/**
+	 * Precio del menú.
+	 */
+	private int price;
 
-    /**
-     * Restaurante al que pertenece el menú.
-     */
-    @ManyToOne
-    @JoinColumn(name = "restaurant_Id")
-    private Restaurant restaurant;
-    
-    /**
-     * Restaurante al que pertenece la mesa.
-     */
-    @OneToMany(mappedBy = "menu")
-    private List<TableRestaurant> tables;
-    
-    /**
-     * Platillos que contiene el menu
-     * */
-    @OneToMany(mappedBy = "menu")
-    private List<FoodPlate> foodPlates;
-    /**
-     * Constructor por defecto.
-     */
-    public Menu() {}
+	/**
+	 * Restaurante al que pertenece el menú.
+	 */
+	@ManyToOne
+	@JoinColumn(name = "restaurant_Id")
+	private Restaurant restaurant;
 
-    /**
-     * Constructor con todos los atributos.
-     *
-     * @param menu_Id Identificador único del menú.
-     * @param name Nombre del menú.
-     * @param description Descripción del menú.
-     * @param price Precio del menú.
-     * @param restaurant Restaurante al que pertenece el menú.
-     */
-    public Menu(int menu_Id, String name, String description, int price, Restaurant restaurant, List<TableRestaurant>tables) {
-        this.menu_Id = menu_Id;
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.restaurant = restaurant;
-        this.tables=tables;
-    }
+	/**
+	 * Restaurante al que pertenece la mesa.
+	 */
+	@OneToMany(mappedBy = "menu")
+	private List<TableRestaurant> tables;
 
-    // Getters and setters
+	/**
+	 * Platillos que contiene el menu
+	 */
+	@OneToMany(mappedBy = "menu")
+	private List<FoodPlate> foodPlates;
 
+	/**
+	 * Constructor por defecto.
+	 */
+	public Menu() {
+	}
 
+	/**
+	 * Constructor con todos los atributos.
+	 *
+	 * @param menu_Id     Identificador único del menú.
+	 * @param name        Nombre del menú.
+	 * @param description Descripción del menú.
+	 * @param price       Precio del menú.
+	 * @param restaurant  Restaurante al que pertenece el menú.
+	 */
+	public Menu(String name, String description, int price, Restaurant restaurant) {
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.restaurant = restaurant;
+	}
+
+	// Getters and setters
 
 	@Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + menu_Id;
-        result = prime * result + Objects.hash(name, description, price, restaurant);
-        return result;
-    }
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + menu_Id;
+		result = prime * result + Objects.hash(name, description, price, restaurant);
+		return result;
+	}
 
-    /**
+	/**
 	 * @return the menu_Id
 	 */
 	public int getMenu_Id() {
@@ -183,18 +181,18 @@ public class Menu {
 	}
 
 	@Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Menu other = (Menu) obj;
-        return menu_Id == other.menu_Id && Objects.equals(name, other.name)
-                && Objects.equals(description, other.description) && price == other.price
-                && Objects.equals(restaurant, other.restaurant);
-    }
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Menu other = (Menu) obj;
+		return menu_Id == other.menu_Id && Objects.equals(name, other.name)
+				&& Objects.equals(description, other.description) && price == other.price
+				&& Objects.equals(restaurant, other.restaurant);
+	}
 
 	@Override
 	public String toString() {
@@ -232,7 +230,5 @@ public class Menu {
 		builder.append("]");
 		return builder.toString();
 	}
-
-   
 
 }

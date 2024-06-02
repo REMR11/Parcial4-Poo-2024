@@ -17,11 +17,9 @@ import lombok.Data;
 
 import lombok.ToString;
 
-
-
 /**
  * clase que representa una reservación
- * */
+ */
 @Entity
 @Table(name = "RESERVATION")
 public class Reservation {
@@ -32,41 +30,39 @@ public class Reservation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer reservation_Id;
-	
+
 	/**
 	 * Fecha y hora de la reservación.
 	 */
 	private LocalTime reservation_date;
-	
+
 	/**
 	 * Precio total de la reservación.
 	 */
 	@Column(nullable = false, precision = 10)
 	private float total_price;
-	
+
 	/**
 	 * Estado de la reservación.
 	 */
 	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private Status status;
-	
+
 	/**
 	 * Cliente asociado a la reservación.
 	 */
 	@ManyToOne
-	@JoinColumn(name="costumer_Id")
+	@JoinColumn(name = "costumer_Id")
 	private Costumer costumer;
-	
+
 	/**
 	 * restaurante asociado a la reservación.
 	 */
 	@ManyToOne
-	@JoinColumn(name= "restaurant_Id")
+	@JoinColumn(name = "restaurant_Id")
 	private Restaurant restaurant;
-	
-	
-	
+
 	/**
 	 * @return the reservation_Id
 	 */
@@ -169,39 +165,38 @@ public class Reservation {
 				&& Objects.equals(reservation_date, other.reservation_date) && status == other.status
 				&& Float.floatToIntBits(total_price) == Float.floatToIntBits(other.total_price);
 	}
-	
+
 	/**
 	 * Enum que representa los diferentes estados de una reservación.
 	 */
 	public enum Status {
 		PENDING, CONFIRMED, CANCELLED
 	}
-	
-	
-	
-	 /**
-     * Constructor por defecto.
-     */
-    public Reservation() {}
 
-    /**
-     * Constructor con todos los atributos.
-     *
-     * @param reservation_Id Identificador único de la reservación.
-     * @param reservation_date Fecha y hora de la reservación.
-     * @param total_price Precio total de la reservación.
-     * @param status Estado de la reservación.
-     * @param costumer Cliente asociado a la reservación.
-     * @param restaurant Restaurante asociado a la reservación.
-     */
-    public Reservation(Integer reservation_Id, LocalTime reservation_date, float total_price, Status status, Costumer costumer, Restaurant restaurant) {
-        this.reservation_Id = reservation_Id;
-        this.reservation_date = reservation_date;
-        this.total_price = total_price;
-        this.status = status;
-        this.costumer = costumer;
-        this.restaurant = restaurant;
-    }
+	/**
+	 * Constructor por defecto.
+	 */
+	public Reservation() {
+	}
+
+	/**
+	 * Constructor con todos los atributos.
+	 *
+	 * @param reservation_Id   Identificador único de la reservación.
+	 * @param reservation_date Fecha y hora de la reservación.
+	 * @param total_price      Precio total de la reservación.
+	 * @param status           Estado de la reservación.
+	 * @param costumer         Cliente asociado a la reservación.
+	 * @param restaurant       Restaurante asociado a la reservación.
+	 */
+	public Reservation(LocalTime reservation_date, float total_price, Status status, Costumer costumer,
+			Restaurant restaurant) {
+		this.reservation_date = reservation_date;
+		this.total_price = total_price;
+		this.status = status;
+		this.costumer = costumer;
+		this.restaurant = restaurant;
+	}
 
 	@Override
 	public String toString() {
@@ -237,7 +232,5 @@ public class Reservation {
 		builder.append("]");
 		return builder.toString();
 	}
-    
-    
-    
+
 }

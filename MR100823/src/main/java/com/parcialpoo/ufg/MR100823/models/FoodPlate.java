@@ -160,14 +160,42 @@ public class FoodPlate {
 	public FoodPlate() {
 	}
 
-	public FoodPlate(int foodPlate_id, String name, String description, float price, boolean availability, Menu menu) {
+	
+	
+	/**
+	 * @param name
+	 * @param description
+	 * @param price
+	 * @param availability
+	 * @param menu
+	 * @param ingredients
+	 */
+	public FoodPlate(String name, String description, float price, boolean availability, List<Ingredient> ingredients) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.availability = availability;
+		this.ingredients = ingredients;
+	}
+
+	/**
+	 * @param foodPlate_id
+	 * @param name
+	 * @param description
+	 * @param price
+	 * @param availability
+	 * @param ingredients
+	 */
+	public FoodPlate(int foodPlate_id, String name, String description, float price, boolean availability,
+			List<Ingredient> ingredients) {
 		super();
 		this.foodPlate_id = foodPlate_id;
 		this.name = name;
 		this.description = description;
 		this.price = price;
 		this.availability = availability;
-		this.menu = menu;
+		this.ingredients = ingredients;
 	}
 
 }

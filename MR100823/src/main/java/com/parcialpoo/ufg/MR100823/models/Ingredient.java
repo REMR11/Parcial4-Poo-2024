@@ -124,6 +124,22 @@ public class Ingredient {
 		super();
 	}
 
+	
+	/**
+	 * @param ingredient_id
+	 * @param name
+	 * @param description
+	 * @param price
+	 * @param amount
+	 */
+	public Ingredient(String name, String description, float price, int amount) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.amount = amount;
+	}
+
 	/**
 	 * @param ingredient_id
 	 * @param name

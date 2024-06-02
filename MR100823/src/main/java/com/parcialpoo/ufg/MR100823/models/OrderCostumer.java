@@ -163,6 +163,25 @@ public class OrderCostumer{
 		super();
 	}
 
+	
+	/**
+	 * @param costumer
+	 * @param plates
+	 * @param payment
+	 * @param orderDate
+	 * @param quantity
+	 * @param totalPrice
+	 * @param status
+	 */
+	public OrderCostumer(Costumer costumer, List<FoodPlate> plates, Time orderDate, int quantity, Status status) {
+		super();
+		this.costumer = costumer;
+		this.plates = plates;
+		this.orderDate = orderDate;
+		this.quantity = quantity;
+		this.status = status;
+	}
+
 	/**
 	 * @param order_Id
 	 * @param costumer

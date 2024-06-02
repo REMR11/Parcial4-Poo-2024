@@ -61,7 +61,25 @@ public class Costumer {
      */
     public Costumer() {}
 
+    
     /**
+	 * @param costumer_Id
+	 * @param name
+	 * @param email
+	 * @param password
+	 * @param phone
+	 */
+	public Costumer(String name, String email, String password, int phone) {
+		super();
+		this.costumer_Id = costumer_Id;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.phone = phone;
+	}
+
+
+	/**
 	 * @param costumer_Id
 	 * @param name
 	 * @param email

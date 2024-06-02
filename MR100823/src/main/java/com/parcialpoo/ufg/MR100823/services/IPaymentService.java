@@ -38,6 +38,6 @@ public interface IPaymentService {
      *
      * @param pPayment la entidad Payment a eliminar.
      */
-    public void DeletePayment(Payment pPayment);
+    public void deletePayment(Payment pPayment);
 
 }

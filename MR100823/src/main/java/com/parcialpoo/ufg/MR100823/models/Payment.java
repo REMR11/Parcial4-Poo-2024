@@ -136,10 +136,9 @@ public class Payment {
 	 * @param amount
 	 * @param status
 	 */
-	public Payment(int payment_Id, OrderCostumer order, Payment_method paymentMethod, Time paymentDate, int amount,
+	public Payment(OrderCostumer order, Payment_method paymentMethod, Time paymentDate, int amount,
 			Status status) {
 		super();
-		this.payment_Id = payment_Id;
 		this.order = order;
 		this.paymentMethod = paymentMethod;
 		this.paymentDate = paymentDate;

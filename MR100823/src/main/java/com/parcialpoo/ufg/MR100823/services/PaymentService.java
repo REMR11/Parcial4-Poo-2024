@@ -57,7 +57,7 @@ public class PaymentService implements IPaymentService {
      * @param pPayment la entidad Payment a eliminar.
      */
     @Override
-    public void DeletePayment(Payment pPayment) {
+    public void deletePayment(Payment pPayment) {
         pPaymentRepository.delete(pPayment);
     }
 
